@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #fafaf9;  /* stone-50 */
+  color: #1c1917;       /* stone-900 */
+  -webkit-font-smoothing: antialiased;
+}

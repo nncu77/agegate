@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+
+# Node
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Environments
+.env
+.env.local
+.env.*.local
+
+# ML model caches (download separately on each machine)
+models/
+*.pth
+*.onnx
+*.pkl
+.insightface/
+
+# Test fixtures — binary images downloaded by scripts/download_test_fixtures.py
+# (README.md and fixtures.json under tests/fixtures/ stay tracked)
+backend/tests/fixtures/*.jpg
+backend/tests/fixtures/*.jpeg
+backend/tests/fixtures/*.png
+backend/tests/fixtures/*.JPG
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log

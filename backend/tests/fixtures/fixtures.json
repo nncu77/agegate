@@ -1,0 +1,57 @@
+[
+  {
+    "commons_file": "Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+    "expected_age": 42,
+    "subject": "Albert Einstein",
+    "year": 1921,
+    "license": "PD-old-100",
+    "filename": "age_42_einstein.jpg",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Einstein_1921_by_F_Schmutzer_-_restoration.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "sha256": "95b532a34e4446651f1151d836f0eda9b3e7a9dff6ac368073b8cd887b04dd8c",
+    "bytes": 2713057
+  },
+  {
+    "commons_file": "Mark_Twain_by_AF_Bradley.jpg",
+    "expected_age": 72,
+    "subject": "Mark Twain",
+    "year": 1907,
+    "license": "PD-old-100",
+    "filename": "age_72_twain.jpg",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Mark_Twain_by_AF_Bradley.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "sha256": "fa565ddac86fcf8f80ff089692777391cc63e7806e4e5166e51796f8962710a8",
+    "bytes": 85833
+  },
+  {
+    "commons_file": "Marie_Curie_c1920.jpg",
+    "expected_age": 53,
+    "subject": "Marie Curie",
+    "year": 1920,
+    "license": "PD-old-100",
+    "filename": "age_53_curie.jpg",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Marie_Curie_c1920.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "sha256": "2751b961d2a1bbc4c1708452b7d750df08f9b447937c2fc8b72ea7e38bea0092",
+    "bytes": 1033372
+  },
+  {
+    "commons_file": "N.Tesla.JPG",
+    "expected_age": 37,
+    "subject": "Nikola Tesla",
+    "year": 1893,
+    "license": "PD-US-expired",
+    "filename": "age_37_tesla.jpg",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/N.Tesla.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "sha256": "d5cc1bd31444bb86e2b90a4a060ba7174b08447dc75ed935a539ee3bf3253e89",
+    "bytes": 1472372
+  },
+  {
+    "commons_file": "Abraham_Lincoln_O-77_matte_collodion_print.jpg",
+    "expected_age": 56,
+    "subject": "Abraham Lincoln",
+    "year": 1865,
+    "license": "PD-old-100",
+    "filename": "age_56_lincoln.jpg",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Abraham_Lincoln_O-77_matte_collodion_print.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "sha256": "f5e79a35f74b54e0435dfc87f5956d6917725e2f5b8c17932ecf5bad704e29b2",
+    "bytes": 3898023
+  }
+]
