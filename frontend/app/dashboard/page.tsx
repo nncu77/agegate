@@ -238,37 +238,63 @@ export default function Dashboard() {
                     <tr>
                       <th className="py-2 pr-4">時間</th>
                       <th className="py-2 pr-4">判定</th>
-                      <th className="py-2 pr-4">區間</th>
+                      <th className="py-2 pr-4">AI 估測</th>
                       <th className="py-2 pr-4">信心</th>
                       <th className="py-2 pr-4">操作員覆寫</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {auditRows.slice(0, 20).map((r) => (
-                      <tr key={r.id} className="border-t border-stone-100">
-                        <td className="py-2 pr-4 font-mono text-xs text-stone-600">
-                          {new Date(r.timestamp).toLocaleString("zh-TW", {
-                            hour12: false,
-                          })}
-                        </td>
-                        <td className="py-2 pr-4">
-                          <DecisionBadge decision={r.decision} />
-                        </td>
-                        <td className="py-2 pr-4 font-mono">
-                          {r.age_low > 0
-                            ? `${r.age_low}–${r.age_high}`
-                            : "—"}
-                        </td>
-                        <td className="py-2 pr-4 font-mono">
-                          {r.face_confidence > 0
-                            ? `${(r.face_confidence * 100).toFixed(0)}%`
-                            : "—"}
-                        </td>
-                        <td className="py-2 pr-4 text-stone-600">
-                          {r.operator_override ?? "—"}
-                        </td>
-                      </tr>
-                    ))}
+                    {auditRows.slice(0, 20).map((r) => {
+                      const hasAge = r.age_low > 0;
+                      const point = hasAge
+                        ? Math.round((r.age_low + r.age_high) / 2)
+                        : null;
+                      const halfSpan = hasAge
+                        ? Math.max(
+                            1,
+                            Math.round((r.age_high - r.age_low) / 2),
+                          )
+                        : 0;
+                      return (
+                        <tr key={r.id} className="border-t border-stone-100">
+                          <td className="py-2 pr-4 font-mono text-xs text-stone-600">
+                            {new Date(r.timestamp).toLocaleString("zh-TW", {
+                              hour12: false,
+                            })}
+                          </td>
+                          <td className="py-2 pr-4">
+                            <DecisionBadge decision={r.decision} />
+                          </td>
+                          <td
+                            className="py-2 pr-4 font-mono"
+                            title={
+                              hasAge
+                                ? `區間 ${r.age_low}–${r.age_high} 歲`
+                                : ""
+                            }
+                          >
+                            {point !== null ? (
+                              <>
+                                {point}
+                                <span className="text-xs text-stone-400 ml-1">
+                                  ±{halfSpan}
+                                </span>
+                              </>
+                            ) : (
+                              "—"
+                            )}
+                          </td>
+                          <td className="py-2 pr-4 font-mono">
+                            {r.face_confidence > 0
+                              ? `${(r.face_confidence * 100).toFixed(0)}%`
+                              : "—"}
+                          </td>
+                          <td className="py-2 pr-4 text-stone-600">
+                            {r.operator_override ?? "—"}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
