@@ -20,30 +20,12 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
  * which keeps multi-environment deploys possible later.
  */
 
-const PROJECT_URL = "https://gofhvetpebcklknqyvgp.supabase.co";
-const PROJECT_ANON_KEY =
+// Hardcoded. Env vars caused too many issues (truncated paste on
+// Vercel, trailing slash on HF Space). NEXT_PUBLIC_* values ship in
+// the bundle anyway — see lib/supabase.ts header docstring.
+const url = "https://gofhvetpebcklknqyvgp.supabase.co";
+const anonKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdvZmh2ZXRwZWJja2xrbnF5dmdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwODQ2NjcsImV4cCI6MjA5NDY2MDY2N30.HObTGLTgzrFqHzUceUHIvUHzxO1tfrQHLG1TP2EIkdA";
-
-function resolveEnv(
-  raw: string | undefined,
-  fallback: string,
-  minLength: number,
-): string {
-  const v = raw?.trim();
-  if (!v || v.length < minLength) return fallback;
-  return v;
-}
-
-const url = resolveEnv(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  PROJECT_URL,
-  20,
-);
-const anonKey = resolveEnv(
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-  PROJECT_ANON_KEY,
-  200,
-);
 
 let _client: SupabaseClient | null = null;
 
