@@ -85,8 +85,17 @@ export function Camera({
     const canvas = canvasRef.current;
     if (!video || !canvas || !ready) return null;
 
-    const w = video.videoWidth;
-    const h = video.videoHeight;
+    // Resize to MAX_DIM on the long edge before encoding. InsightFace
+    // internally resizes detection input to 640×640 anyway, so sending
+    // a 1280×720 webcam frame is pure waste of bandwidth + cold-start
+    // inference time on free-tier hosts. Cuts ~5x payload size with
+    // zero detection-accuracy cost.
+    const MAX_DIM = 640;
+    const vw = video.videoWidth;
+    const vh = video.videoHeight;
+    const scale = Math.min(1, MAX_DIM / Math.max(vw, vh));
+    const w = Math.round(vw * scale);
+    const h = Math.round(vh * scale);
     canvas.width = w;
     canvas.height = h;
 
@@ -94,8 +103,7 @@ export function Camera({
     if (!ctx) return null;
     // Note: do NOT mirror here. We mirror for display only.
     ctx.drawImage(video, 0, 0, w, h);
-    // 0.85 quality keeps bytes manageable while preserving face detail
-    return canvas.toDataURL("image/jpeg", 0.85);
+    return canvas.toDataURL("image/jpeg", 0.8);
   }, [ready]);
 
   const capture = useCallback(async () => {
